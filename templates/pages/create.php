@@ -15,7 +15,7 @@
                     <input type="text" name="title" class="field-long" />
                </li>
                <li>
-                    <label>Opis</label>
+                    <label>Treść</label>
                     <textarea name="description" id="field"
                     class="field-long field-textarea"></textarea>
                </li>
