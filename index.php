@@ -27,8 +27,10 @@ Controller::initConfiguration($configuration);
 
 (new Controller($request)) -> run();
 } catch (ConfigurationException $e) {
-    echo 'Problem z konfiguracją <br/> Proszę skontaktowac się z adminem'
+    echo "<h1>Wystąpił błąd w aplikacji</h1>";
+    echo 'Problem z konfiguracją <br/> Proszę skontaktowac się z adminem';
 } catch (AppException $e) {
+    echo "<h1>Wystąpił błąd w aplikacji</h1>";
     echo $e->getMessage();
 } catch (Throwable $e) {
     echo "<h1>Wystąpił błąd w aplikacji</h1>";
