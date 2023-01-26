@@ -31,8 +31,8 @@ class Database {
 
     public function createNote(array $data) : void
     {
-        try{      
-             $title = $this->conn->quote($data['title']);
+        try{   
+            $title = $this->conn->quote($data['title']);
             $description = $this->conn->quote($data['description']);
             $created = $this->conn->quote(date('Y-m-d H:i:s'));
 

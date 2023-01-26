@@ -46,16 +46,17 @@ class Controller
         switch($this->action()){
             case 'create':
                 $page = 'create';
-                $created = false;
         
                 $data = $this->getRequestPost();
 
                 if(!empty($data)) {
-                    $created = true;
-                    $this->database->createNote($data);  
-                    header('Location: /');          
+
+                    $this->database->createNote([
+                        'title' => $data['title'],
+                        'description' => $data['description']
+                    ]);  
+                    header('Location: /?before=created');          
                 }
-                    $viewParams['created'] = $created;
                 break;
             case 'show':
                 $viewParams = [
@@ -65,7 +66,9 @@ class Controller
                 break;
             default:
                 $page = 'list';
-                $viewParams['resultList'] = "wyświetlamy notatki";
+
+                $data = $this->getRequestGet();
+                $viewParams['before'] = $data['before'] ?? null;
                 break; 
         }
         $this -> view -> render($page, $viewParams);
