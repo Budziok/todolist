@@ -8,6 +8,7 @@ require_once("src/Exception/ConfigurationException.php");
 
 use App\Exception\ConfigurationException;
 
+require_once("Utils/debug.php");
 require_once("src/Database.php");
 require_once("src/View.php");
 
@@ -58,6 +59,7 @@ class Controller
                     header('Location: /?before=created');          
                 }
                 break;
+
             case 'show':
                 $viewParams = [
                     'title' => 'Moja notatka',
@@ -68,10 +70,13 @@ class Controller
                 $page = 'list';
 
                 $data = $this->getRequestGet();
-                $viewParams['before'] = $data['before'] ?? null;
+                $viewParams = [
+                    'notes' => $this->database->getNotes(),
+                    'before' => $data['before'] ?? null
+                ];
                 break; 
         }
-        $this -> view -> render($page, $viewParams);
+        $this -> view -> render($page, $viewParams ?? []);
     }
 
     private function action(): string
