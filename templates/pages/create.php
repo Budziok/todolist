@@ -1,6 +1,6 @@
 
  <div>
-     <h3>nowa notatka</h3>
+     <h3>Dodawanie notatki</h3>
     <div>
         <form class="note-form" action="/?action=create" method="post"> 
           <ul>
